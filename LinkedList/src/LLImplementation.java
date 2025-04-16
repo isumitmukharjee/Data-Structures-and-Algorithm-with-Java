@@ -34,7 +34,7 @@ public class LLImplementation {
         return head;
     }
 
-     static int lengthOfLL(Node head){
+    static int lengthOfLL(Node head) {
         int count = 0;
         Node temp = head;
         while (temp != null) {
@@ -55,17 +55,67 @@ public class LLImplementation {
         System.out.println();
     }
 
-    static int searchLL(Node head, int val){
+    static int searchLL(Node head, int val) {
 
         Node temp = head;
-        while(temp!=null){
-            if(temp.data == val){
+        while (temp != null) {
+            if (temp.data == val) {
                 return 1;
             }
             temp = temp.next;
         }
         System.out.println();
-return 0;
+        return 0;
+    }
+
+    static Node deletionOfHead(Node head){
+        if(head == null){
+            return head;
+        }
+//        Node temp = head;
+        head = head.next;
+        return head;
+    }
+    static Node deleteTail(Node head){
+        if(head == null || head.next == null){
+            return null;
+        }
+
+        Node temp =head;
+
+        while(temp.next.next != null){
+            temp = temp.next;
+        }
+        temp.next = null;
+
+        return head;
+    }
+
+    static Node deleteAtK(Node head, int k){
+
+        if(head == null){
+            return head;
+        }
+
+        if(k==1){
+            Node temp = head;
+            head = head.next;
+            return head;
+        }
+
+        int count = 0;
+        Node temp = head;
+        Node prev = null;
+        while(temp != null){
+            count++;
+            if(count == k){
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
     }
 
     public static void main(String[] args) {
@@ -75,9 +125,16 @@ return 0;
 
         System.out.print("Linked List: ");
         printLinkedList(head);
-        System.out.println();
-        System.out.println("Size of LL "+lengthOfLL(head));
-        System.out.println();
-        System.out.println("T"+searchLL(head, 300));
+//        System.out.println();
+//        System.out.println("Size of LL " + lengthOfLL(head));
+//        System.out.println();
+//        System.out.println("T" + searchLL(head, 300));
+
+//        head = deletionOfHead(head);
+//        printLinkedList(head);
+//        head = deleteTail(head);
+//        printLinkedList(head);
+        head = deleteAtK(head, 2);
+        printLinkedList(head);
     }
 }
