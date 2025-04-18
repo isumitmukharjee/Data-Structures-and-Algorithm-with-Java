@@ -118,6 +118,17 @@ public class LLImplementation {
         return head;
     }
 
+    static Node deletePerValue(Node head, int value){
+        if(head == null) return null;
+        if(head.data == value){
+            Node temp = head;
+            head = head.next;
+            return head;
+        }
+
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {111, 2, 3, 4, 5};
 
