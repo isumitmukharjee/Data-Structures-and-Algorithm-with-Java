@@ -42,7 +42,7 @@ public class Template {
   static long readLong() throws IOException {
     return Long.parseLong(next());
   }
-
+f
   static int readInt() throws IOException {
     return Integer.parseInt(next());
   }
